@@ -15,8 +15,8 @@ query MyQuery($RoomId:ID!) {
 
 export default (RoomId: string) => {
     const { loading, error, data } = useQuery(QUERY_LIST_MESSAGE, { variables: { RoomId } });
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
+    if (loading) return [];
+    if (error) return [];
     const _data = data as Query
     return _data?.listMessage?.items
 }

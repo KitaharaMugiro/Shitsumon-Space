@@ -6,44 +6,29 @@ interface Props {
 }
 
 export default (props: Props) => {
-    const data = queryListMessage(props.roomId)
-    console.log(data)
+    const roomUserId = "ROOM_USER_ID"
+    const messages = queryListMessage(props.roomId)
     return (
         <>
-            {data.messages.map(({ id, user: messageUser, content }: any) => (
+            {messages?.map(message => (
                 <div
+                    key={message?.MessageId}
                     style={{
                         display: "flex",
-                        justifyContent: user === messageUser ? "flex-end" : "flex-start",
+                        justifyContent: roomUserId === message?.UserId ? "flex-end" : "flex-start",
                         paddingBottom: "1em",
                     }}
                 >
-                    {user !== messageUser && (
-                        <div
-                            style={{
-                                height: 50,
-                                width: 50,
-                                marginRight: "0.5em",
-                                border: "2px solid #e5e6ea",
-                                borderRadius: 25,
-                                textAlign: "center",
-                                fontSize: "18pt",
-                                paddingTop: 5,
-                            }}
-                        >
-                            {messageUser.slice(0, 2).toUpperCase()}
-                        </div>
-                    )}
                     <div
                         style={{
-                            background: user === messageUser ? "blue" : "#e5e6ea",
-                            color: user === messageUser ? "white" : "black",
+                            background: roomUserId === message?.UserId ? "#e5e6ea" : "blue",
+                            color: roomUserId === message?.UserId ? "black" : "white",
                             padding: "1em",
                             borderRadius: "1em",
                             maxWidth: "60%",
                         }}
                     >
-                        {content}
+                        {message?.Message}
                     </div>
                 </div>
             ))}
