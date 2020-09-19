@@ -1,0 +1,18 @@
+- type: AMAZON_DYNAMODB
+  name: "Room"
+  description: "It is Room table."
+  config:
+    tableName: { Ref: room }
+    versioned: false
+- type: AMAZON_DYNAMODB
+  name: "Message"
+  description: "It is Message table."
+  config:
+    tableName: { Ref: message }
+    versioned: false
+- type: AMAZON_DYNAMODB
+  name: "Paticipant"
+  description: "It is Paticipant table."
+  config:
+    tableName: { Ref: paticipant }
+    versioned: false

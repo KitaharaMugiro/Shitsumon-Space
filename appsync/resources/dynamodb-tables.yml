@@ -1,0 +1,61 @@
+Resources:
+  room:
+    Type: "AWS::DynamoDB::Table"
+    DeletionPolicy: Retain
+    Properties:
+      TableName: ${self:provider.environment.DYNAMODB_TABLE_PREFIX}-Room
+      AttributeDefinitions:
+        - AttributeName: RoomId
+          AttributeType: S
+        # - AttributeName: UserId
+        #   AttributeType: S
+        # - AttributeName: UserName
+        #   AttributeType: S
+        # - AttributeName: Status
+        #   AttributeType: S
+        # - AttributeName: CreatedAt
+        #   AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: RoomId
+          KeyType: HASH
+  message:
+    Type: "AWS::DynamoDB::Table"
+    DeletionPolicy: Retain
+    Properties:
+      TableName: ${self:provider.environment.DYNAMODB_TABLE_PREFIX}-Message
+      AttributeDefinitions:
+        - AttributeName: RoomId
+          AttributeType: S
+        - AttributeName: MessageId
+          AttributeType: S
+        # - AttributeName: UserId
+        #   AttributeType: S
+        # - AttributeName: Message
+        #   AttributeType: S
+        # - AttributeName: CreatedAt
+        #   AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: RoomId
+          KeyType: HASH
+        - AttributeName: MessageId
+          KeyType: RANGE
+  paticipant:
+    Type: "AWS::DynamoDB::Table"
+    DeletionPolicy: Retain
+    Properties:
+      TableName: ${self:provider.environment.DYNAMODB_TABLE_PREFIX}-Participant
+      AttributeDefinitions:
+        - AttributeName: RoomId
+          AttributeType: S
+        - AttributeName: UserId
+          AttributeType: S
+        # - AttributeName: Status
+        #   AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: RoomId
+          KeyType: HASH
+        - AttributeName: UserId
+          KeyType: RANGE

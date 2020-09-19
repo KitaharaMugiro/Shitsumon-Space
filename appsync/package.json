@@ -1,0 +1,16 @@
+{
+  "name": "shitsumon-space-appsync",
+  "version": "1.0.0",
+  "description": "質問スペースのためのGraphQL",
+  "main": "index.js",
+  "dependencies": {
+    "serverless-appsync-plugin": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "deploy": "sls deploy -v",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

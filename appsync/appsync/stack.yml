@@ -1,0 +1,19 @@
+- name: "PublicAppsyncEndpoint"
+  authenticationType: API_KEY
+  schema:
+    - appsync/schemas/schema.graphql
+  caching:
+    behavior: FULL_REQUEST_CACHING
+    ttl: 3600
+    atRestEncryption:
+    transitEncryption:
+    type: "T2_SMALL"
+  logConfig:
+    loggingRoleArn: { Fn::GetAtt: [AppSyncLoggingServiceRole, Arn] }
+    level: ERROR
+    excludeVerboseContent: false
+  mappingTemplatesLocation: appsync/resolvers
+  mappingTemplates:
+    - ${file(./appsync/mappingtemplates.yml)}
+  dataSources:
+    - ${file(./appsync/datasources.yml)}

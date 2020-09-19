@@ -1,0 +1,35 @@
+schema {
+    mutation:Mutation
+    query: Query
+}
+
+type Query {
+    room(RoomId: ID!): Room
+    listMessage(RoomId: ID!) : [Message]
+}
+
+type Mutation {
+    createRoom(UserName:String, UserId: ID!): Room
+    closeRoom(RoomId: ID!) : Room
+}
+
+type Room {
+    RoomId: ID!
+    UserId: ID!
+    UserName: String
+    Status: RoomStatus!
+    CreatedAt: String!
+}
+
+enum RoomStatus {
+    open
+    close
+}
+
+type Message {
+    MessageId: ID!
+    UserId: ID!
+    RoomId: ID!
+    Message: String
+    CreatedAt: String!
+}

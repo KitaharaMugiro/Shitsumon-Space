@@ -1,0 +1,3 @@
+- dataSource: "Room"
+  type: "Mutation"
+  field: "createRoom"

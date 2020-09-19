@@ -1,0 +1,13 @@
+{
+    "version" : "2017-02-28",
+    "operation" : "PutItem",
+    "key" : {
+        "RoomId": $util.dynamodb.toDynamoDBJson($util.autoId()),
+    },
+    "attributeValues" : {
+        "UserName"    : $util.dynamodb.toDynamoDBJson($ctx.args.UserName),
+        "UserId" : $util.dynamodb.toDynamoDBJson($ctx.args.UserId),
+        "Status" : "open",
+        "CreatedAt": $util.time.nowFormatted("yyyy-MM-dd HH:mm:ssZ")
+    }
+}
