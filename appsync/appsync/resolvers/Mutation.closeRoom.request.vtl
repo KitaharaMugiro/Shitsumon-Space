@@ -2,12 +2,15 @@
     "version" : "2017-02-28",
     "operation" : "UpdateItem",
     "key" : {
-        "id": $util.dynamodb.toDynamoDBJson($ctx.args.RoomId),
+        "RoomId": $util.dynamodb.toDynamoDBJson($ctx.args.RoomId),
     },
     "update" : {
-        "expression" : "SET Status = :Status",
+        "expression" : "SET #Status = :Status",
+        "expressionNames": {
+            "#Status" : "Status",
+        },
         "expressionValues": {
-            ":Status" : "close"
+            ":Status" : $util.dynamodb.toDynamoDBJson("close")
         }
     }
 }

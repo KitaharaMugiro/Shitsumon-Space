@@ -5,12 +5,17 @@ schema {
 
 type Query {
     room(RoomId: ID!): Room
-    listMessage(RoomId: ID!) : [Message]
+    listMessage(RoomId: ID!) : ModelMessagesList
 }
 
 type Mutation {
     createRoom(UserName:String, UserId: ID!): Room
     closeRoom(RoomId: ID!) : Room
+}
+
+type ModelMessagesList {
+    items: [Message]
+    nextToken: String
 }
 
 type Room {

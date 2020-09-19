@@ -7,7 +7,7 @@
     "attributeValues" : {
         "UserName"    : $util.dynamodb.toDynamoDBJson($ctx.args.UserName),
         "UserId" : $util.dynamodb.toDynamoDBJson($ctx.args.UserId),
-        "Status" : "open",
-        "CreatedAt": $util.time.nowFormatted("yyyy-MM-dd HH:mm:ssZ")
+        "Status" : $util.dynamodb.toDynamoDBJson("open"),
+        "CreatedAt": $util.dynamodb.toDynamoDBJson($util.time.nowFormatted("yyyy-MM-dd HH:mm:ssZ"))
     }
 }
